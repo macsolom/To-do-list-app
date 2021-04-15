@@ -1,31 +1,31 @@
-function newItem() {
-
 //  Add a new item to the list
-  let li = $('<li></li>');
-  let inputValue = $('#input').val();
-  li.append(document.createTextNode(inputValue));
+function newItem(){
+    let li = $("<li></li>");
+    let inputValue = $("#input").val();
+    li.append(inputValue);
 
-  if (inputValue === '') {
-    alert('You must add an item!')
-  } else {
-    let list = $('#list');
-    list.append(li);
-  }
+    if (inputValue === " ") {
+         alert("you must add an item!")
+    }
+    else{
+       $("#list").append(li);
+    }
 
 // Cross out an item from the list
-  li.on('dblclick', function(){
-  li.toggleClass('strike');
-  });
+    li.on("dblclick",function crossOut(){
+          li.toggleClass("strike")
+      });
 
 // Add the delete "X" button & add class delete
-let crossOutButton = $('<crossOutButton></crossOutButton>');
-li.append(crossOutButton);
-crossOutButton.append(document.createTextNode('X'));
-crossOutButton.on('click', function(){
-  li.addClass('delete');
-});
+let crossOutButton = $("<crossOutButton></crossOutButton>");
+    crossOutButton.append(document.createTextNode("X"));
+    li.append(crossOutButton);
 
+
+    crossOutButton.on("click", deleteListItem);
+    function deleteListItem(){
+        li.addClass("delete")
+    }
 // Ability to reorder the items:
-  $('#list').sortable();
-
+    $('#list').sortable();
 }
